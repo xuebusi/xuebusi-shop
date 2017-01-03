@@ -4,31 +4,31 @@
 <h2>我们用了3台linux虚拟机来搭建该商城项目，主机名分别为：hadoop01、hadoop02和hadoop03。</h2>
 <h3>该商城项目包含6个web工程，也就是6个war包</h3>：
 <ul>
-	<li>（1）taotao-manager-web:商城后台;</li>
-	<li>（2）taotao-portal:商城前台;</li>
-	<li>（3）taotao-order:订单系统;</li>
-	<li>（4）taotao-rest:rest服务器;</li>
-	<li>（5）taotao-search:搜索服务器;</li>
-	<li>（6）taotao-sso:登录服务器;</li>
+	<li>（1）xuebusi-manager-web:商城后台;</li>
+	<li>（2）xuebusi-portal:商城前台;</li>
+	<li>（3）xuebusi-order:订单系统;</li>
+	<li>（4）xuebusi-rest:rest服务器;</li>
+	<li>（5）xuebusi-search:搜索服务器;</li>
+	<li>（6）xuebusi-sso:登录服务器;</li>
 </ul>
 
 <h3>该商城项目包含4个jar包：</h3>
 
 <ul>
-	<li>（1）taotao-common: 通用工具类;</li>
-	<li>（2）taotao-manager-mapper: DAO类;</li>
-	<li>（3）taotao-manager-pojo: 实体类;</li>
-	<li>（4）taotao-manager-service: 业务类;</li>
+	<li>（1）xuebusi-common: 通用工具类;</li>
+	<li>（2）xuebusi-manager-mapper: DAO类;</li>
+	<li>（3）xuebusi-manager-pojo: 实体类;</li>
+	<li>（4）xuebusi-manager-service: 业务类;</li>
 </ul>
 
 
 <h3>该商城项目包含2个pom工程：</h3>
-（1）taotao-parent:这是一个pom工程，是所有工程的父工程;
-（2）taotao-manager:这也是一个pom工程，是以下4个工程的父工程：
-	taotao-manager-mapper;
-	taotao-manager-pojo;
-	taotao-manager-service;
-	taotao-manager-web;
+（1）xuebusi-parent:这是一个pom工程，是所有工程的父工程;
+（2）xuebusi-manager:这也是一个pom工程，是以下4个工程的父工程：
+	xuebusi-manager-mapper;
+	xuebusi-manager-pojo;
+	xuebusi-manager-service;
+	xuebusi-manager-web;
 
 <h3>首先在3台服务器上分别部署一个zookeeper;</h3>
 zookeeper集群的启动命令：/root/apps/zookeeper/bin/zkServer.sh start
@@ -61,7 +61,7 @@ zookeeper集群的停止命令：/root/apps/zookeeper/bin/zkServer.sh stop
 		
 <h3>（3）搭建搜索服务器</h3>
 		Solr集群:4个Solr实例，4个tomcat实例，端口号分别为8080、8081、8082和8083;
-		Solr集群部署目录：/root/apps/taotao/solrcloud/;
+		Solr集群部署目录：/root/apps/xuebusi/solrcloud/;
 		
 		-rwxr-xr-x. 1 root root  212 Dec 21 03:30 shutdown.sh
 		drwxr-xr-x. 4 root root 4096 Dec 21 03:41 solrhome01
@@ -75,16 +75,16 @@ zookeeper集群的停止命令：/root/apps/zookeeper/bin/zkServer.sh stop
 		drwxr-xr-x. 9 root root 4096 Dec 21 02:33 tomcat04
 		
 		启动solr集群的命令：
-		/root/apps/taotao/solrcloud/tomcat01/bin/startup.sh
-		/root/apps/taotao/solrcloud/tomcat02/bin/startup.sh
-		/root/apps/taotao/solrcloud/tomcat03/bin/startup.sh
-		/root/apps/taotao/solrcloud/tomcat04/bin/startup.sh
+		/root/apps/xuebusi/solrcloud/tomcat01/bin/startup.sh
+		/root/apps/xuebusi/solrcloud/tomcat02/bin/startup.sh
+		/root/apps/xuebusi/solrcloud/tomcat03/bin/startup.sh
+		/root/apps/xuebusi/solrcloud/tomcat04/bin/startup.sh
 		
 		停止solr集群的命令：
-		/root/apps/taotao/solrcloud/tomcat01/bin/shutdown.sh
-		/root/apps/taotao/solrcloud/tomcat02/bin/shutdown.sh
-		/root/apps/taotao/solrcloud/tomcat03/bin/shutdown.sh
-		/root/apps/taotao/solrcloud/tomcat04/bin/shutdown.sh
+		/root/apps/xuebusi/solrcloud/tomcat01/bin/shutdown.sh
+		/root/apps/xuebusi/solrcloud/tomcat02/bin/shutdown.sh
+		/root/apps/xuebusi/solrcloud/tomcat03/bin/shutdown.sh
+		/root/apps/xuebusi/solrcloud/tomcat04/bin/shutdown.sh
 		
 		Solr服务器web访问地址：
 		http://hadoop01:8080/solr
@@ -94,17 +94,17 @@ zookeeper集群的停止命令：/root/apps/zookeeper/bin/zkServer.sh stop
 		
 		将数据库中的所有商品信息导入到solr索引库的URL：http://hadoop02:8081/search/manager/importall
 		
-<h3>（4）前台系统服务器（一个tomcat实例，端口号：8808），所在位置：/root/apps/taotao/tomcat-portal-8808;</h3>
+<h3>（4）前台系统服务器（一个tomcat实例，端口号：8808），所在位置：/root/apps/xuebusi/tomcat-portal-8808;</h3>
 	前台服务器访问地址：http://hadoop01:8808/
-	前台服务器的启动命令：/root/apps/taotao/tomcat-portal-8808/bin/startup.sh
-	前台服务器的停止命令：/root/apps/taotao/tomcat-portal-8808/bin/shutdown.sh 
+	前台服务器的启动命令：/root/apps/xuebusi/tomcat-portal-8808/bin/startup.sh
+	前台服务器的停止命令：/root/apps/xuebusi/tomcat-portal-8808/bin/shutdown.sh 
 	
 	
 <h2>hadoop02服务器部署情况：</h2>
 <h3>（1）搭建订单服务器、rest服务器、搜索服务器和单点登录服务器这4台服务器;</h3>
 
 这4台服务器也就是4个tomcat服务器：
-		服务器部署目录：/root/apps/taotao/tomcat-service;
+		服务器部署目录：/root/apps/xuebusi/tomcat-service;
 		[root@hadoop02 tomcat-service]# ll
 		drwxr-xr-x. 9 root root   4096 Dec 27 03:26 tomcat-order-8083
 		drwxr-xr-x. 9 root root   4096 Dec 27 03:22 tomcat-rest-8080
