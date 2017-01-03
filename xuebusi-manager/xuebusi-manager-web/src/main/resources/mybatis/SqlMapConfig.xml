@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 配置分页插件 -->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<!-- 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库--> 
+			<!-- 配置数据库的方言：比如如果你是mysql数据库，它会使用limit进行分页，
+				如果你是oracle数据库，它会使用rownumber进行分页 -->
+			<!-- MariaDB是MySQL的一个分支，它跟MySQL是一样的，二者之间可以进行无缝切换 -->
+        	<property name="dialect" value="mysql"/>
+		</plugin>
+	</plugins>
+</configuration>
